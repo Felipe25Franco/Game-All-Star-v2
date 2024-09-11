@@ -1,0 +1,61 @@
+.home-page {
+    padding: 20px;
+    background-color: #4e4ece;
+    min-height: 100vh;
+    box-sizing: border-box;
+  }
+  
+  /* Wrapper para organizar as seções em linhas */
+  .section-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    margin-left: 20px;
+    gap: 20px;
+  }
+  
+  /* Estilização para as seções de Notícias e Atualizações */
+  .section-noticias,
+  .section-atualizacoes {
+    flex: 0 1 calc(50% - 10px); /* Cada um ocupa 50% menos o gap */
+    background-color: #c56868;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 50px;
+  }
+  
+  /* Estilização para a seção de Ranking */
+  .section-ranking {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 60%;
+    margin-left: 20px;
+
+  }
+  
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .section-wrapper {
+      flex-direction: column;
+    }
+  
+    .section-noticias,
+    .section-atualizacoes,
+    .section-ranking {
+      width: 100%;
+    }
+  
+    .section-wrapper > * {
+      margin-bottom: 20px;
+    }
+  }
+  

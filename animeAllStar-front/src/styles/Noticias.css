@@ -1,0 +1,29 @@
+.noticias-container {
+    padding: 20px;
+    margin: 30px;
+    margin-top: 50px;
+}
+
+.noticia-item {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+.noticia-item h2 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.noticia-item p {
+    margin: 5px 0;
+}
+
+.noticia-image {
+     width: 10%; /* Ajusta a imagem para ocupar 100% da largura do container */
+     max-width: 300px; /* Define um tamanho máximo para a imagem */
+     height: auto; /* Mantém a proporção da imagem */
+     display: block;
+     margin: 0 auto 15px; /* Centraliza a imagem e adiciona margem inferior */
+     border-radius: 8px; /* Bordas arredondadas para a imagem */
+}

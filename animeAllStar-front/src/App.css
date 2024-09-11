@@ -1,0 +1,24 @@
+/* App.css */
+.button-sidebar {
+  position: fixed; /* Torna o botão posicionado em relação ao seu contêiner */
+  top: 57px; /* Ajuste conforme necessário */
+  left: 0px; /* Posição inicial */
+  z-index: 1000;
+  background-color: #23232e;
+  color: #fff;
+  border: solid 1px wheat;
+  border-color: white;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 0 5px 5px 0;
+  transition: left 0.3s ease; /* Adiciona uma transição suave ao mudar a posição */
+}
+
+.button-sidebar.move-right {
+  left: 250px; /* Ajuste para a distância que o botão deve se mover quando a sidebar abrir */
+}
+
+.button-sidebar:hover {
+  background-color: #555;
+}
