@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'; // Importando Axios para requisições HTTP
+import { Link } from 'react-router-dom';
 import { BASE_URL } from '../../../config/axios'; // Importa a constante BASE_URL
 import '../../../styles/pages/admin/Cadastro/MundosAdmin.css';
 
@@ -121,7 +122,7 @@ function MundosAdmin() {
         <div className="mundos-list-container">
           <h2>Mundos Cadastrados</h2>
           <div className="mundos-list">
-            {mundos.map((mundo) => (
+            {mundos.slice(0, 4).map((mundo) => (
               <div key={mundo.id} className="mundo-item">
                 <img src={mundo.urlImage} alt={mundo.nome} />
                 <h3>{mundo.nome}</h3>
@@ -132,6 +133,12 @@ function MundosAdmin() {
                 </div>
               </div>
             ))}
+            {/* Botão para ver todos os itens */}
+                        {mundos.length > 4 && (
+                            <div className="view-all-button">
+                                <Link to="/mundosAdminListagem">Ver Todos os Mundos</Link>
+                            </div>
+                        )}
           </div>
         </div>
       </div>

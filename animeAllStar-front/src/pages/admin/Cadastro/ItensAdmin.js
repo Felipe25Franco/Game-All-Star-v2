@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'; // Importando Axios para requisições HTTP
+import { Link } from 'react-router-dom';
 import { BASE_URL } from '../../../config/axios'; // Importa a constante BASE_URL
 import '../../../styles/pages/admin/Cadastro/ItensAdmin.css'; // Adapte conforme necessário
 
@@ -151,7 +152,7 @@ function ItensAdmin() {
               <option value="">Selecione um mundo</option>
               {mundos.map((mundo) => (
                 <option key={mundo.id} value={mundo.id}>
-                  {mundo.name}
+                  {mundo.nome}
                 </option>
               ))}
             </select>
@@ -167,7 +168,7 @@ function ItensAdmin() {
         <div className="itens-list-container">
           <h2>Itens Cadastrados</h2>
           <div className="itens-list">
-            {itens.map((item) => (
+            {itens.slice(0 ,3).map((item) => (
               <div key={item.id} className="item-item">
                 <h3>{item.nome || 'Nome não disponível'}</h3>
                 <p>Tipo: {item.tipoItem ? item.tipoItem.nome : 'Tipo não disponível'}</p>
@@ -178,6 +179,12 @@ function ItensAdmin() {
                 </div>
               </div>
             ))}
+            {/* Botão para ver todos os itens */}
+            {itens.length > 3 && (
+                <div className="view-all-button">
+                    <Link to="/admin/itens">Ver Todos os Itens</Link>
+                </div>
+            )}
           </div>
         </div>
       </div>
