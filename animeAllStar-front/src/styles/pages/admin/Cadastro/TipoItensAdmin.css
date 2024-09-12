@@ -1,0 +1,50 @@
+/* Estilo para o container da tela de cadastro */
+.cadastro-tipo-item-container {
+  max-width: 600px;
+  margin: 0 auto;
+  margin-top: 100px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+/* Estilo do formulário */
+.cadastro-tipo-item-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Estilo dos inputs e labels */
+.cadastro-tipo-item-container label {
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.cadastro-tipo-item-container input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+/* Estilo do botão de adicionar tipo */
+.cadastro-tipo-item-container button {
+  background-color: #28a745; /* Cor de fundo verde */
+  color: white; /* Texto branco */
+  border: none; /* Remove a borda padrão */
+  border-radius: 4px; /* Cantos arredondados */
+  padding: 10px 20px; /* Espaçamento interno */
+  font-size: 16px; /* Tamanho da fonte */
+  cursor: pointer; /* Muda o cursor para indicar que o botão é clicável */
+  transition: background-color 0.3s ease; /* Transição suave para a cor de fundo */
+}
+
+.cadastro-tipo-item-container button:hover {
+  background-color: #218838; /* Cor de fundo verde mais escura ao passar o mouse */
+}
+
+.cadastro-tipo-item-container button:focus {
+  outline: none; /* Remove o contorno padrão ao focar */
+  box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.5); /* Adiciona uma sombra ao redor quando o botão está em foco */
+}

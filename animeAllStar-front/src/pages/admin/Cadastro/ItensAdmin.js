@@ -1,23 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'; // Importando Axios para requisições HTTP
-import { Link } from 'react-router-dom';
-import { BASE_URL } from '../../../config/axios'; // Importa a constante BASE_URL
-import '../../../styles/pages/admin/Cadastro/ItensAdmin.css'; // Adapte conforme necessário
+import axios from 'axios';
+import { Link ,useNavigate  } from 'react-router-dom';
+import { BASE_URL } from '../../../config/axios';
+import '../../../styles/pages/admin/Cadastro/ItensAdmin.css';
 
 function ItensAdmin() {
   const [itens, setItens] = useState([]);
   const [tipos, setTipos] = useState([]);
   const [mundos, setMundos] = useState([]);
-  const [newItem, setNewItem] = useState({ nome: '', tipoItem: '', mundo: '' });
+
+  const [newItem, setNewItem] = useState({ nome: '', urlImage: '', tipoItem: '', mundo: '', subtipoItem: '' });
   const [isEditing, setIsEditing] = useState(false);
   const [editItemId, setEditItemId] = useState(null);
 
-  // Função para buscar itens do backend
+
+    const navigate = useNavigate();
+
+
   useEffect(() => {
     const fetchItens = async () => {
       try {
         const response = await axios.get(`${BASE_URL}/itens`);
-        setItens(response.data || []); // Garantir que response.data seja um array
+        setItens(response.data || []);
       } catch (error) {
         console.error('Erro ao buscar itens:', error);
       }
@@ -25,12 +29,11 @@ function ItensAdmin() {
     fetchItens();
   }, []);
 
-  // Função para buscar tipos de item
   useEffect(() => {
     const fetchTipos = async () => {
       try {
         const response = await axios.get(`${BASE_URL}/tipos`);
-        setTipos(response.data || []); // Garantir que response.data seja um array
+        setTipos(response.data || []);
       } catch (error) {
         console.error('Erro ao buscar tipos de item:', error);
       }
@@ -38,13 +41,11 @@ function ItensAdmin() {
     fetchTipos();
   }, []);
 
-  // Função para buscar mundos
   useEffect(() => {
     const fetchMundos = async () => {
       try {
         const response = await axios.get(`${BASE_URL}/mundos`);
-        console.log('Mundos recebidos:', response.data);
-        setMundos(response.data || []); // Garantir que response.data seja um array
+        setMundos(response.data || []);
       } catch (error) {
         console.error('Erro ao buscar mundos:', error);
       }
@@ -52,40 +53,40 @@ function ItensAdmin() {
     fetchMundos();
   }, []);
 
-  // Função para cadastrar um novo item no backend
+
+
   const handleAddItem = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post(`${BASE_URL}/itens`, newItem);
-      setItens([...itens, response.data]); // Atualiza a lista de itens com o novo item
-      handleClearForm(); // Limpa o formulário após adicionar
+      setItens([...itens, response.data]);
+      handleClearForm();
     } catch (error) {
       console.error('Erro ao adicionar item:', error);
     }
   };
 
-  // Função para limpar os dados do formulário
   const handleClearForm = () => {
-    setNewItem({ nome: '', tipoItem: '', mundo: '' });
+    setNewItem({ nome: '', urlImage: '', tipoItem: '', mundo: '', subtipoItem: '' });
     setIsEditing(false);
     setEditItemId(null);
   };
 
-  // Função para editar um item existente
   const handleEditItem = (id) => {
     const itemToEdit = itens.find((item) => item.id === id);
     if (itemToEdit) {
       setNewItem({
         nome: itemToEdit.nome,
-        tipoItem: itemToEdit.tipoItem ? itemToEdit.tipoItem.id : '', // Verificação adicional
-        mundo: itemToEdit.mundo ? itemToEdit.mundo.id : '' // Verificação adicional
+        urlImage: itemToEdit.urlImage || '',
+        tipoItem: itemToEdit.tipoItem ? itemToEdit.tipoItem.id : '',
+        mundo: itemToEdit.mundo ? itemToEdit.mundo.id : '',
+        subtipoItem: itemToEdit.subtipoItem ? itemToEdit.subtipoItem.id : ''
       });
       setIsEditing(true);
       setEditItemId(id);
     }
   };
 
-  // Função para salvar o item editado no backend
   const handleSaveEdit = async (e) => {
     e.preventDefault();
     try {
@@ -101,7 +102,6 @@ function ItensAdmin() {
     }
   };
 
-  // Função para excluir um item no backend
   const handleDeleteItem = async (id) => {
     try {
       await axios.delete(`${BASE_URL}/itens/${id}`);
@@ -111,11 +111,14 @@ function ItensAdmin() {
     }
   };
 
+
+
+
+
   return (
     <div className="itens-admin-container">
       <h1>Cadastro de Itens</h1>
       <div className="admin-layout">
-        {/* Formulário para cadastrar ou editar itens */}
         <div className="form-container">
           <form onSubmit={isEditing ? handleSaveEdit : handleAddItem}>
             <label htmlFor="nome">Nome do Item:</label>
@@ -127,20 +130,41 @@ function ItensAdmin() {
               required
             />
 
-            <label htmlFor="tipoItem">Tipo do Item:</label>
-            <select
-              id="tipoItem"
-              value={newItem.tipoItem}
-              onChange={(e) => setNewItem({ ...newItem, tipoItem: e.target.value })}
+            <label htmlFor="urlImage">URL da Imagem do Item:</label>
+            <input
+              type="text"
+              id="urlImage"
+              value={newItem.urlImage}
+              onChange={(e) => setNewItem({ ...newItem, urlImage: e.target.value })}
               required
-            >
-              <option value="">Selecione um tipo de item</option>
-              {tipos.map((tipo) => (
-                <option key={tipo.id} value={tipo.id}>
-                  {tipo.nome}
-                </option>
-              ))}
-            </select>
+            />
+
+            <label htmlFor="tipoItem">Tipo do Item:</label>
+            <div className="tipo-item-container">
+              <select
+                id="tipoItem"
+                value={newItem.tipoItem}
+                onChange={(e) => setNewItem({ ...newItem, tipoItem: e.target.value })}
+                required
+              >
+                <option value="">Selecione um tipo de item</option>
+                {tipos.map((tipo) => (
+                  <option key={tipo.id} value={tipo.id}>
+                    {tipo.nome}
+                  </option>
+                ))}
+              </select>
+
+            <button
+                          type="button"
+                          className="add-type-button"
+                          onClick={() => navigate('/tipoItensAdmin')}
+                        >
+                          Adicionar Tipo
+                        </button>
+                      </div>
+
+
 
             <label htmlFor="mundo">Mundo:</label>
             <select
@@ -164,7 +188,6 @@ function ItensAdmin() {
           </form>
         </div>
 
-        {/* Lista de itens cadastrados */}
         <div className="itens-list-container">
           <h2>Itens Cadastrados</h2>
           <div className="itens-list">
@@ -172,22 +195,23 @@ function ItensAdmin() {
               <div key={item.id} className="item-item">
                 <h3>{item.nome || 'Nome não disponível'}</h3>
                 <p>Tipo: {item.tipoItem ? item.tipoItem.nome : 'Tipo não disponível'}</p>
-                <p>Mundo: {item.mundo ? item.mundo.name : 'Mundo não disponível'}</p>
+                <p>Mundo: {item.mundo ? item.mundo.nome : 'Mundo não disponível'}</p>
                 <div className="action-buttons">
                   <button onClick={() => handleEditItem(item.id)}>Editar</button>
                   <button onClick={() => handleDeleteItem(item.id)}>Excluir</button>
                 </div>
               </div>
             ))}
-            {/* Botão para ver todos os itens */}
             {itens.length > 3 && (
-                <div className="view-all-button">
-                    <Link to="/admin/itens">Ver Todos os Itens</Link>
-                </div>
+              <div className="view-all-button">
+                <Link to="/admin/itens">Ver Todos os Itens</Link>
+              </div>
             )}
           </div>
         </div>
       </div>
+
+
     </div>
   );
 }

@@ -12,6 +12,7 @@ import org.modelmapper.ModelMapper;
 public class ItemDTO {
     private Long id;
     private String nome;
+    private String urlImage;
     private Long idTipoItem;
     private Long idMundo;
 

@@ -69,3 +69,31 @@
 .item-item h3 {
   margin: 0;
 }
+
+/* Estilo para o container do select e botão */
+.tipo-item-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espaço entre o select e o botão */
+}
+
+/* Estilo do botão de adicionar tipo */
+.add-type-button {
+  background-color: #007bff; /* Cor de fundo azul */
+  color: white; /* Texto branco */
+  border: none; /* Remove a borda padrão */
+  border-radius: 4px; /* Cantos arredondados */
+  padding: 8px 16px; /* Espaçamento interno */
+  font-size: 14px; /* Tamanho da fonte */
+  cursor: pointer; /* Muda o cursor para indicar que o botão é clicável */
+  transition: background-color 0.3s ease; /* Transição suave para a cor de fundo */
+}
+
+.add-type-button:hover {
+  background-color: #0056b3; /* Cor de fundo azul mais escura ao passar o mouse */
+}
+
+.add-type-button:focus {
+  outline: none; /* Remove o contorno padrão ao focar */
+  box-shadow: 0 0 0 2px rgba(38, 143, 255, 0.5); /* Adiciona uma sombra ao redor quando o botão está em foco */
+}

@@ -30,10 +30,10 @@ function DashBoardCadastro() {
           <Card className="dashboard-card" onClick={() => navigate('/itensAdmin')}>
             <CardContent>
                 <Typography variant="h5" component="div" className="dashboard-card-title">
-                          Mundos
+                          Itens
                 </Typography>
                 <Typography variant="body2" className="dashboard-card-description">
-                          Editar Mundos cadastrados no sistema.
+                          Editar Itens cadastrados no sistema.
                 </Typography>
             </CardContent>
 

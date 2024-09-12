@@ -126,7 +126,7 @@ function MundosAdmin() {
               <div key={mundo.id} className="mundo-item">
                 <img src={mundo.urlImage} alt={mundo.nome} />
                 <h3>{mundo.nome}</h3>
-                <p>{mundo.descricao}</p>
+
                 <div className="action-buttons">
                   <button onClick={() => handleEditMundo(mundo.id)}>Editar</button>
                   <button onClick={() => handleDeleteMundo(mundo.id)}>Excluir</button>

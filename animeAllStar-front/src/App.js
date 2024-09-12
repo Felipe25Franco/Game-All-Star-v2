@@ -14,6 +14,7 @@ import DashBoardCadastro from './pages/admin/DashBoardCadastro';
 import MundosAdmin from './pages/admin/Cadastro/MundosAdmin';
 import MundosAdminListagem from './pages/admin/Listagem/MundosAdminListagem';
 import ItensAdmin from './pages/admin/Cadastro/ItensAdmin';
+import TipoItensAdmin from './pages/admin/Cadastro/TipoItensAdmin';
 
 import './App.css';
 
@@ -52,8 +53,9 @@ function App() {
             {/* Adicione outras rotas conforme necessário */}
             <Route path="/dashBoardCadastro" element={<DashBoardCadastro />} />
             <Route path="/mundosAdmin" element={<MundosAdmin />} />
-            <Route path="/mundosAdminListagem" element={MundosAdminListagem} />
+            <Route path="/mundosAdminListagem" element={<MundosAdminListagem />} />
             <Route path="/itensAdmin" element={<ItensAdmin />} />
+            <Route path="/tipoItensAdmin" element={<TipoItensAdmin />} />
             
           </Routes>
         </main>

@@ -1,7 +1,7 @@
 /* App.css */
 .button-sidebar {
   position: fixed; /* Torna o botão posicionado em relação ao seu contêiner */
-  top: 57px; /* Ajuste conforme necessário */
+  top: 74px; /* Ajuste conforme necessário */
   left: 0px; /* Posição inicial */
   z-index: 1000;
   background-color: #23232e;
