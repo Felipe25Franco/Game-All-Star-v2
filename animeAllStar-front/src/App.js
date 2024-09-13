@@ -15,6 +15,7 @@ import MundosAdmin from './pages/admin/Cadastro/MundosAdmin';
 import MundosAdminListagem from './pages/admin/Listagem/MundosAdminListagem';
 import ItensAdmin from './pages/admin/Cadastro/ItensAdmin';
 import TipoItensAdmin from './pages/admin/Cadastro/TipoItensAdmin';
+import SubTipoItensAdmin from './pages/admin/Cadastro/SubTipoItensAdmin';
 
 import './App.css';
 
@@ -56,6 +57,7 @@ function App() {
             <Route path="/mundosAdminListagem" element={<MundosAdminListagem />} />
             <Route path="/itensAdmin" element={<ItensAdmin />} />
             <Route path="/tipoItensAdmin" element={<TipoItensAdmin />} />
+            <Route path="/subTipoItensAdmin" element={<SubTipoItensAdmin />} />
             
           </Routes>
         </main>

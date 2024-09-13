@@ -9,7 +9,7 @@ function ItensAdmin() {
   const [tipos, setTipos] = useState([]);
   const [mundos, setMundos] = useState([]);
 
-  const [newItem, setNewItem] = useState({ nome: '', urlImage: '', tipoItem: '', mundo: '', subtipoItem: '' });
+  const [newItem, setNewItem] = useState({ nome: '', urlImage: '', tipoItem: '', mundo: '' });
   const [isEditing, setIsEditing] = useState(false);
   const [editItemId, setEditItemId] = useState(null);
 
@@ -32,7 +32,7 @@ function ItensAdmin() {
   useEffect(() => {
     const fetchTipos = async () => {
       try {
-        const response = await axios.get(`${BASE_URL}/tipos`);
+        const response = await axios.get(`${BASE_URL}/tipoItens`);
         setTipos(response.data || []);
       } catch (error) {
         console.error('Erro ao buscar tipos de item:', error);
@@ -67,7 +67,7 @@ function ItensAdmin() {
   };
 
   const handleClearForm = () => {
-    setNewItem({ nome: '', urlImage: '', tipoItem: '', mundo: '', subtipoItem: '' });
+    setNewItem({ nome: '', urlImage: '', tipoItem: '', mundo: '' });
     setIsEditing(false);
     setEditItemId(null);
   };
@@ -80,7 +80,7 @@ function ItensAdmin() {
         urlImage: itemToEdit.urlImage || '',
         tipoItem: itemToEdit.tipoItem ? itemToEdit.tipoItem.id : '',
         mundo: itemToEdit.mundo ? itemToEdit.mundo.id : '',
-        subtipoItem: itemToEdit.subtipoItem ? itemToEdit.subtipoItem.id : ''
+
       });
       setIsEditing(true);
       setEditItemId(id);
@@ -150,7 +150,7 @@ function ItensAdmin() {
                 <option value="">Selecione um tipo de item</option>
                 {tipos.map((tipo) => (
                   <option key={tipo.id} value={tipo.id}>
-                    {tipo.nome}
+                    {tipo.nome} {tipo.subTipoItem ? `- ${tipo.subTipoItem.nome}` : ''}
                   </option>
                 ))}
               </select>
@@ -191,11 +191,19 @@ function ItensAdmin() {
         <div className="itens-list-container">
           <h2>Itens Cadastrados</h2>
           <div className="itens-list">
-            {itens.slice(0 ,3).map((item) => (
+            {itens.slice(0, 3).map((item) => (
               <div key={item.id} className="item-item">
-                <h3>{item.nome || 'Nome não disponível'}</h3>
-                <p>Tipo: {item.tipoItem ? item.tipoItem.nome : 'Tipo não disponível'}</p>
-                <p>Mundo: {item.mundo ? item.mundo.nome : 'Mundo não disponível'}</p>
+                {/* Exibindo a imagem do item */}
+                <div className="item-image">
+                  <img src={item.urlImage || 'default-image-url'} alt={item.nome || 'Imagem não disponível'} />
+                </div>
+
+                <div className="item-details">
+                  <h3>{item.nome || 'Nome não disponível'}</h3>
+                  <p>Tipo: {item.tipoItem ? item.tipoItem.nome : 'Tipo não disponível'}</p>
+                  <p>Mundo: {item.mundo ? item.mundo.nome : 'Mundo não disponível'}</p>
+                </div>
+
                 <div className="action-buttons">
                   <button onClick={() => handleEditItem(item.id)}>Editar</button>
                   <button onClick={() => handleDeleteItem(item.id)}>Excluir</button>
@@ -209,6 +217,7 @@ function ItensAdmin() {
             )}
           </div>
         </div>
+
       </div>
 
 

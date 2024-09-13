@@ -97,3 +97,28 @@
   outline: none; /* Remove o contorno padrão ao focar */
   box-shadow: 0 0 0 2px rgba(38, 143, 255, 0.5); /* Adiciona uma sombra ao redor quando o botão está em foco */
 }
+
+.item-item {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.item-image {
+  margin-right: 10px;
+}
+
+.item-image img {
+  width: 100px; /* Ajuste o tamanho conforme necessário */
+  height: auto;
+}
+
+.item-details {
+  flex-grow: 1;
+}
+
+.action-buttons {
+  margin-top: 10px;
+}

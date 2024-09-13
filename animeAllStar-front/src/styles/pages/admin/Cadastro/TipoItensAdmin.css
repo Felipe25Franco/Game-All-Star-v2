@@ -48,3 +48,32 @@
   outline: none; /* Remove o contorno padrão ao focar */
   box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.5); /* Adiciona uma sombra ao redor quando o botão está em foco */
 }
+
+/* Estilo para o container do select e botão de subtipo */
+.subtipo-item-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* Estilo para o botão de adicionar subtipo */
+.add-subtipo-button {
+  background-color: #28a745; /* Cor de fundo verde */
+  color: white; /* Texto branco */
+  border: none; /* Remove a borda */
+  border-radius: 4px; /* Cantos arredondados */
+  padding: 8px 16px; /* Espaçamento interno */
+  font-size: 14px; /* Tamanho da fonte */
+  cursor: pointer; /* Muda o cursor para indicar que é clicável */
+  transition: background-color 0.3s ease; /* Transição suave na cor de fundo */
+}
+
+.add-subtipo-button:hover {
+  background-color: #218838; /* Fundo verde mais escuro no hover */
+}
+
+.add-subtipo-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.5); /* Sombra ao focar */
+}
