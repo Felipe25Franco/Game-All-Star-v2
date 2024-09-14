@@ -11,11 +11,16 @@ import CreatePersonagem from './pages/Criacao/CreatePersonagem';
 import NewPersonagem from './pages/Criacao/NewPersonagem';
 
 import DashBoardCadastro from './pages/admin/DashBoardCadastro';
+
 import MundosAdmin from './pages/admin/Cadastro/MundosAdmin';
 import MundosAdminListagem from './pages/admin/Listagem/MundosAdminListagem';
+
 import ItensAdmin from './pages/admin/Cadastro/ItensAdmin';
 import TipoItensAdmin from './pages/admin/Cadastro/TipoItensAdmin';
 import SubTipoItensAdmin from './pages/admin/Cadastro/SubTipoItensAdmin';
+
+import CriaturasAdmin from './pages/admin/Cadastro/CriaturaAdmin';
+import CriaturasAdminListagem from './pages/admin/Listagem/CriaturaAdminListagem';
 
 import './App.css';
 
@@ -58,6 +63,8 @@ function App() {
             <Route path="/itensAdmin" element={<ItensAdmin />} />
             <Route path="/tipoItensAdmin" element={<TipoItensAdmin />} />
             <Route path="/subTipoItensAdmin" element={<SubTipoItensAdmin />} />
+            <Route path="/criaturasAdminListagem" element={<CriaturasAdminListagem />} />
+            <Route path="/criaturasAdmin" element={<CriaturasAdmin />} />
             
           </Routes>
         </main>

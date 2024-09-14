@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link ,useNavigate  } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { BASE_URL } from '../../../config/axios';
 import '../../../styles/pages/admin/Cadastro/ItensAdmin.css';
 
@@ -8,19 +8,17 @@ function ItensAdmin() {
   const [itens, setItens] = useState([]);
   const [tipos, setTipos] = useState([]);
   const [mundos, setMundos] = useState([]);
-
   const [newItem, setNewItem] = useState({ nome: '', urlImage: '', tipoItem: '', mundo: '' });
   const [isEditing, setIsEditing] = useState(false);
   const [editItemId, setEditItemId] = useState(null);
 
-
-    const navigate = useNavigate();
-
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchItens = async () => {
       try {
         const response = await axios.get(`${BASE_URL}/itens`);
+        console.log('Itens recebidos da API:', response.data); // Inspecione aqui a resposta
         setItens(response.data || []);
       } catch (error) {
         console.error('Erro ao buscar itens:', error);
@@ -53,7 +51,11 @@ function ItensAdmin() {
     fetchMundos();
   }, []);
 
-
+  // Função para buscar o nome de tipoItem e mundo pelo ID
+  const getNomeById = (lista, id) => {
+    const itemEncontrado = lista.find((item) => item.id === id);
+    return itemEncontrado ? itemEncontrado.nome : 'Não disponível';
+  };
 
   const handleAddItem = async (e) => {
     e.preventDefault();
@@ -80,7 +82,6 @@ function ItensAdmin() {
         urlImage: itemToEdit.urlImage || '',
         tipoItem: itemToEdit.tipoItem ? itemToEdit.tipoItem.id : '',
         mundo: itemToEdit.mundo ? itemToEdit.mundo.id : '',
-
       });
       setIsEditing(true);
       setEditItemId(id);
@@ -110,8 +111,6 @@ function ItensAdmin() {
       console.error('Erro ao excluir item:', error);
     }
   };
-
-
 
 
 
@@ -188,30 +187,29 @@ function ItensAdmin() {
           </form>
         </div>
 
-        <div className="itens-list-container">
-          <h2>Itens Cadastrados</h2>
-          <div className="itens-list">
-            {itens.slice(0, 3).map((item) => (
-              <div key={item.id} className="item-item">
-                {/* Exibindo a imagem do item */}
-                <div className="item-image">
-                  <img src={item.urlImage || 'default-image-url'} alt={item.nome || 'Imagem não disponível'} />
-                </div>
+          <div className="itens-list-container">
+                  <h2>Itens Cadastrados</h2>
+                  <div className="itens-list">
+                    {itens.slice(0, 3).map((item) => (
+                      <div key={item.id} className="item-item">
+                        <div className="item-image">
+                          <img src={item.urlImage || 'default-image-url'} alt={item.nome || 'Imagem não disponível'} />
+                        </div>
 
-                <div className="item-details">
-                  <h3>{item.nome || 'Nome não disponível'}</h3>
-                  <p>Tipo: {item.tipoItem ? item.tipoItem.nome : 'Tipo não disponível'}</p>
-                  <p>Mundo: {item.mundo ? item.mundo.nome : 'Mundo não disponível'}</p>
-                </div>
+                        <div className="item-details">
+                          <h3>{item.nome || 'Nome não disponível'}</h3>
+                          <p>Tipo: {getNomeById(tipos, item.tipoItem)}</p>
+                          <p>Mundo: {getNomeById(mundos, item.mundo)}</p>
+                        </div>
 
-                <div className="action-buttons">
-                  <button onClick={() => handleEditItem(item.id)}>Editar</button>
-                  <button onClick={() => handleDeleteItem(item.id)}>Excluir</button>
-                </div>
-              </div>
-            ))}
-            {itens.length > 3 && (
-              <div className="view-all-button">
+                        <div className="action-buttons">
+                          <button onClick={() => handleEditItem(item.id)}>Editar</button>
+                          <button onClick={() => handleDeleteItem(item.id)}>Excluir</button>
+                        </div>
+                      </div>
+                    ))}
+                    {itens.length > 3 && (
+                      <div className="view-all-button">
                 <Link to="/admin/itens">Ver Todos os Itens</Link>
               </div>
             )}

@@ -42,20 +42,15 @@ function DashBoardCadastro() {
 
         {/* Card 3: Excluir */}
         <Grid item xs={12} sm={4}>
-          <Card className="dashboard-card">
-            <CardContent>
-              <Typography variant="h5" component="div" className="dashboard-card-title">
-                Excluir
-              </Typography>
-              <Typography variant="body2" className="dashboard-card-description">
-                Remova um item do sistema.
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button size="small" className="dashboard-button">
-                Excluir
-              </Button>
-            </CardActions>
+          <Card className="dashboard-card" onClick={() => navigate('/criaturasAdmin')}>
+             <CardContent>
+                            <Typography variant="h5" component="div" className="dashboard-card-title">
+                                      Criaturas
+                            </Typography>
+                            <Typography variant="body2" className="dashboard-card-description">
+                                      Editar Criaturas cadastrados no sistema.
+                            </Typography>
+                        </CardContent>
           </Card>
         </Grid>
         {/* Card 1: Cadastrar */}
