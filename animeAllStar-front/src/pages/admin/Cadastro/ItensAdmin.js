@@ -149,7 +149,7 @@ function ItensAdmin() {
                 <option value="">Selecione um tipo de item</option>
                 {tipos.map((tipo) => (
                   <option key={tipo.id} value={tipo.id}>
-                    {tipo.nome} {tipo.subTipoItem ? `- ${tipo.subTipoItem.nome}` : ''}
+                    {tipo.nome} {tipo.subTipoItem ? `| ${tipo.subTipoItem.nome}` : ''}
                   </option>
                 ))}
               </select>
