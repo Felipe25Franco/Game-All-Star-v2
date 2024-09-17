@@ -11,6 +11,7 @@ import org.modelmapper.ModelMapper;
 public class CriaturaDTO {
     private Long id;
     private String nome;
+    private String urlImage;
     private String descricao;
     private Boolean invocacao;
     private Long idMundo;

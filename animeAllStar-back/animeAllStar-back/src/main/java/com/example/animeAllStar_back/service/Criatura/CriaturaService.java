@@ -35,17 +35,6 @@ public class CriaturaService {
     }
 
     public void validar(Criatura criatura) {
-        if (criatura.getNome() == null || criatura.getNome().trim().equals("")) {
-            throw new RegraNegocioException("Item Invalido!!! Insira um Item valido.");
-        }
-        if (criatura.getDescricao() == null || criatura.getDescricao().trim().equals("")) {
-            throw new RegraNegocioException("Descrição Invalida!!! Insira uma Descrição valida.");
-        }
-        if (criatura.getTipoCriatura() == null || criatura.getTipoCriatura().getId() == null || criatura.getTipoCriatura().getId() == 0) {
-            throw new RegraNegocioException("Tipo de Criatura inválida!!!!");
-        }
-        if (criatura.getMundo() == null || criatura.getMundo().getId() == null || criatura.getMundo().getId() == 0) {
-            throw new RegraNegocioException("Mundo inválido!!!!");
-        }
+        
     }
 }

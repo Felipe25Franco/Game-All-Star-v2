@@ -12,7 +12,7 @@ function DashBoardCadastro() {
       <Grid container spacing={3}>
         {/* Card 1: Cadastrar */}
         <Grid item xs={12} sm={4}>
-          <Card className="dashboard-card" onClick={() => navigate('/mundosAdmin')}>
+          <Card className="dashboard-card" onClick={() => navigate('/mundosAdminListagem')}>
             <CardContent>
               <Typography variant="h5" component="div" className="dashboard-card-title">
                 Mundos
@@ -42,7 +42,7 @@ function DashBoardCadastro() {
 
         {/* Card 3: Excluir */}
         <Grid item xs={12} sm={4}>
-          <Card className="dashboard-card" onClick={() => navigate('/criaturasAdmin')}>
+          <Card className="dashboard-card" onClick={() => navigate('/criaturasAdminListagem')}>
              <CardContent>
                             <Typography variant="h5" component="div" className="dashboard-card-title">
                                       Criaturas

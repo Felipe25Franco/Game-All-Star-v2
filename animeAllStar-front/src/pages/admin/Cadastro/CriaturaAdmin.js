@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { BASE_URL } from '../../../config/axios';
-//import '../../../styles/pages/admin/Cadastro/CriaturasAdmin.css';
+import '../../../styles/pages/admin/Cadastro/CriaturasAdmin.css';
 
 function CriaturasAdmin() {
   const [criaturas, setCriaturas] = useState([]);
   const [tiposCriatura, setTiposCriatura] = useState([]);
   const [mundos, setMundos] = useState([]);
 
-  const [newCriatura, setNewCriatura] = useState({ nome: '', descricao: '', invocacao: false, tipoCriatura: '', mundo: '' });
+  const [newCriatura, setNewCriatura] = useState({ nome: '', urlImage: '', descricao: '', invocacao: false, tipoCriatura: '', mundo: '' });
   const [isEditing, setIsEditing] = useState(false);
   const [editCriaturaId, setEditCriaturaId] = useState(null);
 
@@ -53,10 +53,12 @@ function CriaturasAdmin() {
 
   const handleAddCriatura = async (e) => {
     e.preventDefault();
+    console.log('Dados da nova criatura:', newCriatura); // Verifique os dados aqui
     try {
       const response = await axios.post(`${BASE_URL}/criaturas`, newCriatura);
       setCriaturas([...criaturas, response.data]);
-      handleClearForm();
+      setNewCriatura({nome: '', urlImage: '', descricao: '', invocacao: false , tipoCriatura: '', mundo: ''});
+      navigate('/criaturasAdminListagem');
     } catch (error) {
       console.error('Erro ao adicionar criatura:', error);
     }
@@ -68,20 +70,20 @@ function CriaturasAdmin() {
     setEditCriaturaId(null);
   };
 
-  const handleEditCriatura = (id) => {
-    const criaturaToEdit = criaturas.find((criatura) => criatura.id === id);
-    if (criaturaToEdit) {
-      setNewCriatura({
-        nome: criaturaToEdit.nome,
-        descricao: criaturaToEdit.descricao || '',
-        invocacao: criaturaToEdit.invocacao || false,
-        tipoCriatura: criaturaToEdit.tipoCriatura ? criaturaToEdit.tipoCriatura.id : '',
-        mundo: criaturaToEdit.mundo ? criaturaToEdit.mundo.id : '',
-      });
-      setIsEditing(true);
-      setEditCriaturaId(id);
-    }
-  };
+  // const handleEditCriatura = (id) => {
+  //   const criaturaToEdit = criaturas.find((criatura) => criatura.id === id);
+  //   if (criaturaToEdit) {
+  //     setNewCriatura({
+  //       nome: criaturaToEdit.nome,
+  //       descricao: criaturaToEdit.descricao || '',
+  //       invocacao: criaturaToEdit.invocacao || false,
+  //       tipoCriatura: criaturaToEdit.tipoCriatura ? criaturaToEdit.tipoCriatura.id : '',
+  //       mundo: criaturaToEdit.mundo ? criaturaToEdit.mundo.id : '',
+  //     });
+  //     setIsEditing(true);
+  //     setEditCriaturaId(id);
+  //   }
+  // };
 
   const handleSaveEdit = async (e) => {
     e.preventDefault();
@@ -121,6 +123,14 @@ function CriaturasAdmin() {
               onChange={(e) => setNewCriatura({ ...newCriatura, nome: e.target.value })}
               required
             />
+            <label htmlFor="urlImage">URL da Imagem do Criatura:</label>
+                    <input
+                        type="text"
+                        id="urlImage"
+                        value={newCriatura.urlImage}
+                        onChange={(e) => setNewCriatura({ ...newCriatura, urlImage: e.target.value })}
+                        required
+                    />
 
             <label htmlFor="descricao">Descrição da Criatura:</label>
             <input
@@ -175,32 +185,7 @@ function CriaturasAdmin() {
           </form>
         </div>
 
-        <div className="criaturas-list-container">
-          <h2>Criaturas Cadastradas</h2>
-          <div className="criaturas-list">
-            {criaturas.slice(0, 3).map((criatura) => (
-              <div key={criatura.id} className="criatura-item">
-                <div className="criatura-details">
-                  <h3>{criatura.nome || 'Nome não disponível'}</h3>
-                  <p>Descrição: {criatura.descricao || 'Descrição não disponível'}</p>
-                  <p>Invocação: {criatura.invocacao ? 'Sim' : 'Não'}</p>
-                  <p>Tipo: {criatura.tipoCriatura ? criatura.tipoCriatura.nome : 'Tipo não disponível'}</p>
-                  <p>Mundo: {criatura.mundo ? criatura.mundo.nome : 'Mundo não disponível'}</p>
-                </div>
-
-                <div className="action-buttons">
-                  <button onClick={() => handleEditCriatura(criatura.id)}>Editar</button>
-                  <button onClick={() => handleDeleteCriatura(criatura.id)}>Excluir</button>
-                </div>
-              </div>
-            ))}
-            {criaturas.length > 3 && (
-              <div className="view-all-button">
-                <Link to="/admin/criaturas">Ver Todas as Criaturas</Link>
-              </div>
-            )}
-          </div>
-        </div>
+      
 
       </div>
     </div>

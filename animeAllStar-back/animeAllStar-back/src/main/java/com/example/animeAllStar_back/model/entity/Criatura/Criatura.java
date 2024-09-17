@@ -16,6 +16,7 @@ public class Criatura {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
+    private String urlImage;
     private String descricao;
     private Boolean invocacao;
 
