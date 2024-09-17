@@ -1,18 +1,40 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardActions, Button, Typography, Grid } from '@mui/material';
 import { useNavigate } from 'react-router-dom'; 
 import '../../styles/pages/admin/DashBoardCadastro.css'
 
-
+const IMAGES = [
+  'https://i.postimg.cc/T3Tw2sgf/Naruto.jpg',
+  'https://i.postimg.cc/3xjBhrdx/Bleach.webp',
+  'https://i.postimg.cc/qvHLW6BF/One-Piece.jpg'
+];
 
 function DashBoardCadastro() {
+  const [backgroundImage, setBackgroundImage] = useState(IMAGES[0]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setBackgroundImage((prev) => {
+        const currentIndex = IMAGES.indexOf(prev);
+        const nextIndex = (currentIndex + 1) % IMAGES.length;
+        return IMAGES[nextIndex];
+      });
+    }, 3000); // 3 segundos
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="dashboard-container">
       <Grid container spacing={3}>
         {/* Card 1: Cadastrar */}
         <Grid item xs={12} sm={4}>
-          <Card className="dashboard-card" onClick={() => navigate('/mundosAdminListagem')}>
+          <Card 
+            className="dashboard-card" 
+            onClick={() => navigate('/mundosAdminListagem')}
+            style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover' }}
+          >
             <CardContent>
               <Typography variant="h5" component="div" className="dashboard-card-title">
                 Mundos
@@ -21,7 +43,6 @@ function DashBoardCadastro() {
                 Editar Mundos cadastrados no sistema.
               </Typography>
             </CardContent>
-
           </Card>
         </Grid>
 

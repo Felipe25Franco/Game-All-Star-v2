@@ -6,7 +6,7 @@
   }
   
   .dashboard-card {
-    
+    height: 200px;
     transition: all 0.3s ease;
   }
   
