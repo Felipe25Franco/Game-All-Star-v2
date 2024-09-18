@@ -168,3 +168,9 @@
   .modal-content textarea {
     resize: vertical;
   }
+
+  .view-all-button {
+    margin-bottom: 30px;
+    display: flex;
+    gap: 20px;
+  }

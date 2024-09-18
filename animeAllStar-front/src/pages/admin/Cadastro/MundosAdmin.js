@@ -118,28 +118,7 @@ function MundosAdmin() {
             </div>
 
 
-            <div className="mundos-list-container">
-                <h2>Mundos Cadastrados</h2>
-                <div className="mundos-list">
-                    {mundos.slice(0, 4).map((mundo) => (
-                        <div key={mundo.id} className="mundo-item">
-                            <img src={mundo.urlImage} alt={mundo.nome} />
-                            <h3>{mundo.nome}</h3>
-                            <p>{mundo.descricao}</p>
-                            <div className="action-buttons">
-                                <button onClick={() => handleEditMundo(mundo.id)}>Editar</button>
-                                <button onClick={() => handleDeleteMundo(mundo.id)}>Excluir</button>
-                            </div>
-                        </div>
-                    ))}
-
-                    {mundos.length > 4 && (
-                        <div className="view-all-button">
-                            <Link to="/mundosAdminListagem">Ver Todos os Mundos</Link>
-                        </div>
-                    )}
-                </div>
-            </div>
+            
       </div>
     </div>
   );

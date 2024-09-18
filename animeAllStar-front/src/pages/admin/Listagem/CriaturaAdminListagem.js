@@ -78,6 +78,10 @@ function CriaturaAdminListagem() {
   return (
     <div className="criaturas-admin-listagem-container">
       <h1>Lista de Todas as Criaturas</h1>
+      <div className="view-all-button">
+            <Link to="/criaturasAdmin">Cadastrar nova Criatura</Link>
+            <Link to="/criaturasAdmin">Cadastrar novo Tipo de Criatura</Link>
+      </div>
       <div className="criaturas-list">
         {criaturas.map((criatura) => (
           <div key={criatura.id} className="criatura-item">
@@ -90,9 +94,7 @@ function CriaturaAdminListagem() {
             </div>
           </div>
         ))}
-        <div className="view-all-button">
-            <Link to="/criaturasAdmin">Cadastrar nova Criatura</Link>
-        </div>
+       
     </div>
 
       {/* Modal */}

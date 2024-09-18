@@ -26,7 +26,15 @@
   margin-bottom: 30px;
 }
 
-
+.mundo-item img {
+  width: 100%;
+  height: auto;
+  max-width: 200px; /* Define um limite máximo para a largura da imagem */
+  max-height: 200px; /* Define um limite máximo para a altura da imagem */
+  object-fit: cover; /* Garante que a imagem seja ajustada corretamente sem distorção */
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
 
 
 .mundo-item h3 {
