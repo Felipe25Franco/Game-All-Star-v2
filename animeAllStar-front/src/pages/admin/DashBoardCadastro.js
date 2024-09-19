@@ -9,8 +9,15 @@ const IMAGES = [
   'https://i.postimg.cc/qvHLW6BF/One-Piece.jpg'
 ];
 
+const CRIATURAS_IMAGES = [
+  'https://i.postimg.cc/DwcMgc3z/Acnologia.jpg',
+  'https://i.postimg.cc/sfBJnCZ8/ignnel.jpg',
+  'https://i.postimg.cc/yY1cMqJs/gamabunta.jpg'
+];
+
 function DashBoardCadastro() {
   const [backgroundImage, setBackgroundImage] = useState(IMAGES[0]);
+  const [criaturasBackgroundImage, setCriaturasBackgroundImage] = useState(CRIATURAS_IMAGES[0]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -20,7 +27,15 @@ function DashBoardCadastro() {
         const nextIndex = (currentIndex + 1) % IMAGES.length;
         return IMAGES[nextIndex];
       });
+      setCriaturasBackgroundImage((prev) => {
+        const currentIndex = CRIATURAS_IMAGES.indexOf(prev);
+        const nextIndex = (currentIndex + 1) % CRIATURAS_IMAGES.length;
+        return CRIATURAS_IMAGES[nextIndex];
+      });
     }, 3000); // 3 segundos
+    
+      
+    
 
     return () => clearInterval(interval);
   }, []);
@@ -63,7 +78,9 @@ function DashBoardCadastro() {
 
         {/* Card 3: Excluir */}
         <Grid item xs={12} sm={4}>
-          <Card className="dashboard-card" onClick={() => navigate('/criaturasAdminListagem')}>
+          <Card className="dashboard-card" onClick={() => navigate('/criaturasAdminListagem')}
+          style={{ backgroundImage: `url(${criaturasBackgroundImage})`, backgroundSize: 'cover' }}
+          >
              <CardContent>
                             <Typography variant="h5" component="div" className="dashboard-card-title">
                                       Criaturas

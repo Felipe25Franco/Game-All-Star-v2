@@ -53,11 +53,17 @@ function CriaturasAdmin() {
 
   const handleAddCriatura = async (e) => {
     e.preventDefault();
-    console.log('Dados da nova criatura:', newCriatura); // Verifique os dados aqui
+    
+    const criaturaParaEnviar = {
+      ...newCriatura,
+      tipoCriatura: newCriatura.tipoCriatura, // Envia apenas o ID
+      mundo: newCriatura.mundo
+    };
+  
     try {
-      const response = await axios.post(`${BASE_URL}/criaturas`, newCriatura);
+      const response = await axios.post(`${BASE_URL}/criaturas`, criaturaParaEnviar);
       setCriaturas([...criaturas, response.data]);
-      setNewCriatura({nome: '', urlImage: '', descricao: '', invocacao: false , tipoCriatura: '', mundo: ''});
+      setNewCriatura({nome: '', urlImage: '', descricao: '', invocacao: false, tipoCriatura: '', mundo: ''});
       navigate('/criaturasAdminListagem');
     } catch (error) {
       console.error('Erro ao adicionar criatura:', error);
@@ -70,20 +76,7 @@ function CriaturasAdmin() {
     setEditCriaturaId(null);
   };
 
-  // const handleEditCriatura = (id) => {
-  //   const criaturaToEdit = criaturas.find((criatura) => criatura.id === id);
-  //   if (criaturaToEdit) {
-  //     setNewCriatura({
-  //       nome: criaturaToEdit.nome,
-  //       descricao: criaturaToEdit.descricao || '',
-  //       invocacao: criaturaToEdit.invocacao || false,
-  //       tipoCriatura: criaturaToEdit.tipoCriatura ? criaturaToEdit.tipoCriatura.id : '',
-  //       mundo: criaturaToEdit.mundo ? criaturaToEdit.mundo.id : '',
-  //     });
-  //     setIsEditing(true);
-  //     setEditCriaturaId(id);
-  //   }
-  // };
+  
 
   const handleSaveEdit = async (e) => {
     e.preventDefault();
@@ -148,35 +141,35 @@ function CriaturasAdmin() {
               onChange={(e) => setNewCriatura({ ...newCriatura, invocacao: e.target.checked })}
             />
 
-            <label htmlFor="tipoCriatura">Tipo de Criatura:</label>
-            <select
-              id="tipoCriatura"
-              value={newCriatura.tipoCriatura}
-              onChange={(e) => setNewCriatura({ ...newCriatura, tipoCriatura: e.target.value })}
-              required
-            >
-              <option value="">Selecione um tipo de criatura</option>
-              {tiposCriatura.map((tipo) => (
-                <option key={tipo.id} value={tipo.id}>
-                  {tipo.nome}
-                </option>
-              ))}
-            </select>
+              <label htmlFor="tipoCriatura">Tipo de Criatura:</label>
+              <select
+                id="tipoCriatura"
+                value={newCriatura.tipoCriatura}
+                onChange={(e) => setNewCriatura({ ...newCriatura, tipoCriatura: e.target.value })}
+                required
+              >
+                <option value="">Selecione um tipo de criatura</option>
+                {tiposCriatura.map((tipo) => (
+                  <option key={tipo.id} value={tipo.id}>
+                    {tipo.nome}
+                  </option>
+                ))}
+              </select>
 
-            <label htmlFor="mundo">Mundo:</label>
-            <select
-              id="mundo"
-              value={newCriatura.mundo}
-              onChange={(e) => setNewCriatura({ ...newCriatura, mundo: e.target.value })}
-              required
-            >
-              <option value="">Selecione um mundo</option>
-              {mundos.map((mundo) => (
-                <option key={mundo.id} value={mundo.id}>
-                  {mundo.nome}
-                </option>
-              ))}
-            </select>
+              <label htmlFor="mundo">Mundo:</label>
+              <select
+                id="mundo"
+                value={newCriatura.mundo}
+                onChange={(e) => setNewCriatura({ ...newCriatura, mundo: e.target.value })}
+                required
+              >
+                <option value="">Selecione um mundo</option>
+                {mundos.map((mundo) => (
+                  <option key={mundo.id} value={mundo.id}>
+                    {mundo.nome}
+                  </option>
+                ))}
+              </select>
 
             <div className="buttons-container">
               <button type="submit">{isEditing ? 'Salvar Alterações' : 'Cadastrar Criatura'}</button>
