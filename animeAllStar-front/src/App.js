@@ -16,8 +16,10 @@ import MundosAdmin from './pages/admin/Cadastro/MundosAdmin';
 import MundosAdminListagem from './pages/admin/Listagem/MundosAdminListagem';
 
 import ItensAdmin from './pages/admin/Cadastro/ItensAdmin';
+import ItensAdminListagem from './pages/admin/Listagem/ItensAdminListagem';
 import TipoItensAdmin from './pages/admin/Cadastro/TipoItensAdmin';
 import SubTipoItensAdmin from './pages/admin/Cadastro/SubTipoItensAdmin';
+import SubTipoItensAdminListagem from './pages/admin/Listagem/SubTipoItensAdminListagem';
 
 import CriaturasAdmin from './pages/admin/Cadastro/CriaturaAdmin';
 import TipoCriaturasAdmin from './pages/admin/Cadastro/TipoCriaturaAdmin';
@@ -59,16 +61,21 @@ function App() {
 
             {/* Adicione outras rotas conforme necessário */}
             <Route path="/dashBoardCadastro" element={<DashBoardCadastro />} />
+
             <Route path="/mundosAdmin" element={<MundosAdmin />} />
             <Route path="/mundosAdminListagem" element={<MundosAdminListagem />} />
+
             <Route path="/itensAdmin" element={<ItensAdmin />} />
+            <Route path="/itensAdminListagem" element={<ItensAdminListagem />} />
+            
             <Route path="/tipoItensAdmin" element={<TipoItensAdmin />} />
             <Route path="/subTipoItensAdmin" element={<SubTipoItensAdmin />} />
+            
             <Route path="/criaturasAdminListagem" element={<CriaturasAdminListagem />} />
             <Route path="/criaturasAdmin" element={<CriaturasAdmin />} />
             <Route path="/tipoCriaturasAdmin" element={<TipoCriaturasAdmin />} />
 
-            
+            SubTipoItensAdminListagem
             
           </Routes>
         </main>

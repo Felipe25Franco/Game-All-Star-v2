@@ -12,7 +12,7 @@ function SubTipoItensAdmin() {
     e.preventDefault();
     try {
       await axios.post(`${BASE_URL}/subTipoItens`, novoSubTipo);
-      navigate('/tipoItensAdmin'); // Volta para a página de itens após o cadastro
+      navigate('/itensAdminListagem'); // Volta para a página de itens após o cadastro
     } catch (error) {
       console.error('Erro ao adicionar subtipo:', error);
     }

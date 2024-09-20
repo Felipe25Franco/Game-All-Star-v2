@@ -63,7 +63,7 @@ function DashBoardCadastro() {
 
         {/* Card 2: Editar */}
         <Grid item xs={12} sm={4}>
-          <Card className="dashboard-card" onClick={() => navigate('/itensAdmin')}>
+          <Card className="dashboard-card" onClick={() => navigate('/itensAdminListagem')}>
             <CardContent>
                 <Typography variant="h5" component="div" className="dashboard-card-title">
                           Itens
