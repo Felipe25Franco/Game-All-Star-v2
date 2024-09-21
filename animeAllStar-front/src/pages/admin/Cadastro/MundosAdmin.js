@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { BASE_URL } from '../../../config/axios';
 import '../../../styles/pages/admin/Cadastro/MundosAdmin.css';
 
@@ -10,6 +10,7 @@ function MundosAdmin() {
     const [isEditing, setIsEditing] = useState(false);
     const [editMundoId, setEditMundoId] = useState(null);
 
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchMundos = async () => {
@@ -30,6 +31,7 @@ function MundosAdmin() {
             const response = await axios.post(`${BASE_URL}/mundos`, newMundo);
             setMundos([...mundos, response.data]);
             setNewMundo({ nome: '', descricao: '', urlImage: '' });
+            navigate('/mundosAdminListagem');
         } catch (error) {
             console.error('Erro ao adicionar mundo:', error);
         }

@@ -6,6 +6,7 @@ import '../../../styles/pages/admin/Listagem/MundosAdminListagem.css';
 
 function MundosAdminListagem() {
   const [mundos, setMundos] = useState([]);
+  const [searchQuery, setSearchQuery] = useState(''); // Valor da busca
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editMundo, setEditMundo] = useState(null);
 
@@ -20,6 +21,16 @@ function MundosAdminListagem() {
     };
     fetchMundos();
   }, []);
+
+   // Função de busca em tempo real
+   const handleSearch = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  // Filtrando as criaturas com base na busca
+  const filteredMundos = mundos.filter((mundo) =>
+    mundo.nome.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   const handleDeleteMundo = async (id) => {
     try {
@@ -58,8 +69,22 @@ function MundosAdminListagem() {
   return (
     <div className="mundos-admin-listagem-container">
       <h1>Lista de Todos os Mundos</h1>
+
+       {/* Campo de busca */}
+       <input
+        type="text"
+        placeholder="Buscar Mundo pelo nome"
+        value={searchQuery}
+        onChange={handleSearch}
+        className="search-input"
+      />
+
+      <div className="view-all-button">
+        <Link to="/mundosAdmin">Cadastrar novo Mundo</Link>
+      </div>
       <div className="mundos-list">
-        {mundos.map((mundo) => (
+        {filteredMundos.length > 0 ? (
+        filteredMundos.map((mundo) => (
           <div key={mundo.id} className="mundo-item">
             <img src={mundo.urlImage} alt={mundo.nome} />
             <h3>{mundo.nome || 'Nome não disponível'}</h3>
@@ -69,10 +94,11 @@ function MundosAdminListagem() {
                <button className="delete-button" onClick={() => handleDeleteMundo(mundo.id)}>Excluir</button>
             </div>
           </div>
-        ))}
-        <div className="view-all-button">
-                                        <Link to="/mundosAdmin">Voltar aos Mundos</Link>
-                                    </div>
+        ))
+      ) : (
+        <p>Nenhum Mundo Encontrado</p>
+      )}
+       
       </div>
 
       {/* Modal */}
