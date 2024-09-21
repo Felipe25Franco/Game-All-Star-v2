@@ -93,20 +93,16 @@ function DashBoardCadastro() {
         </Grid>
         {/* Card 1: Cadastrar */}
         <Grid item xs={12} sm={4}>
-          <Card className="dashboard-card">
+          <Card className="dashboard-card" onClick={() => navigate('/classesAdminListagem')}>
             <CardContent>
-              <Typography variant="h5" component="div" className="dashboard-card-title">
-                Mundos
-              </Typography>
-              <Typography variant="body2" className="dashboard-card-description">
-                Editar Mundos cadastrados no sistema.
-              </Typography>
+                <Typography variant="h5" component="div" className="dashboard-card-title">
+                          Classes
+                </Typography>
+                <Typography variant="body2" className="dashboard-card-description">
+                          Editar Classes cadastradas no sistema.
+                </Typography>
             </CardContent>
-            <CardActions>
-              <Button size="small" className="dashboard-button">
-                Editar
-              </Button>
-            </CardActions>
+
           </Card>
         </Grid>
 

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { BASE_URL } from '../../../config/axios';
+import { BASE_URL } from '../../../../config/axios';
 import { useNavigate } from 'react-router-dom';
-import '../../../styles/pages/admin/Cadastro/TipoItensAdmin.css';
+import '../../../../styles/pages/admin/Cadastro/TipoItensAdmin.css';
 
 function CadastroTipoItem() {
   const [novoTipo, setNovoTipo] = useState('');

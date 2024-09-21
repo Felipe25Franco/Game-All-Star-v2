@@ -2,6 +2,9 @@
     padding: 20px;
     font-family: Arial, sans-serif;
     width: 80%;
+    margin: 0 auto;
+    margin-top: 100px;
+    max-width: 1200px;
   }
   
   .admin-layout {
@@ -39,18 +42,14 @@
     margin-bottom: 5px;
   }
   
-  input[type="text"],
-  select {
+  input[type="text"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
     border-radius: 5px;
     border: 1px solid #ccc;
-  }
-  
-  input[type="checkbox"] {
-    margin-right: 5px;
-  }
+    box-sizing: border-box; /* Garante que o padding seja considerado na largura */
+}  
   
   .buttons-container {
     display: flex;

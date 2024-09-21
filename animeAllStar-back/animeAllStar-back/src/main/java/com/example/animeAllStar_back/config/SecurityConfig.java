@@ -66,6 +66,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .permitAll()
                 .antMatchers("/api/v1/elementoChakras/**")
                     .permitAll()
+                .antMatchers("/api/v1/classes/**")
+                    .permitAll()
               
 
                     //.antMatchers("/api/v1/vagas/**")

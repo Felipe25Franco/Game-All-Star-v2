@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-import { BASE_URL } from '../../../config/axios';
-import '../../../styles/pages/admin/Cadastro/CriaturasAdmin.css';
+import { BASE_URL } from '../../../../config/axios';
+import '../../../../styles/pages/admin/Cadastro/CriaturasAdmin.css';
 
 function TipoCriaturasAdmin() {
   const [tipoCriaturas, setTipoCriaturas] = useState([]); 

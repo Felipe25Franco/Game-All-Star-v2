@@ -2,7 +2,6 @@ package com.example.animeAllStar_back.service.Criatura;
 
 import com.example.animeAllStar_back.exception.RegraNegocioException;
 import com.example.animeAllStar_back.model.entity.Criatura.Criatura;
-import com.example.animeAllStar_back.model.entity.Item.Item;
 import com.example.animeAllStar_back.model.repository.Criatura.CriaturaRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;

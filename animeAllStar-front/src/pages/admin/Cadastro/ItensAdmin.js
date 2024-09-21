@@ -154,13 +154,7 @@ function ItensAdmin() {
                 ))}
               </select>
 
-            <button
-                          type="button"
-                          className="add-type-button"
-                          onClick={() => navigate('/tipoItensAdmin')}
-                        >
-                          Adicionar Tipo
-                        </button>
+            
                       </div>
 
 
@@ -187,36 +181,10 @@ function ItensAdmin() {
           </form>
         </div>
 
-          <div className="itens-list-container">
-                  <h2>Itens Cadastrados</h2>
-                  <div className="itens-list">
-                    {itens.slice(0, 3).map((item) => (
-                      <div key={item.id} className="item-item">
-                        <div className="item-image">
-                          <img src={item.urlImage || 'default-image-url'} alt={item.nome || 'Imagem não disponível'} />
-                        </div>
-
-                        <div className="item-details">
-                          <h3>{item.nome || 'Nome não disponível'}</h3>
-                          <p>Tipo: {getNomeById(tipos, item.tipoItem)}</p>
-                          <p>Mundo: {getNomeById(mundos, item.mundo)}</p>
-                        </div>
-
-                        <div className="action-buttons">
-                          <button onClick={() => handleEditItem(item.id)}>Editar</button>
-                          <button onClick={() => handleDeleteItem(item.id)}>Excluir</button>
-                        </div>
-                      </div>
-                    ))}
-                    {itens.length > 3 && (
-                      <div className="view-all-button">
-                <Link to="/admin/itens">Ver Todos os Itens</Link>
-              </div>
-            )}
-          </div>
+          
         </div>
 
-      </div>
+    
 
 
     </div>

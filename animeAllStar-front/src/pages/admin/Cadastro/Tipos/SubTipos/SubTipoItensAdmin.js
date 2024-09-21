@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { BASE_URL } from '../../../config/axios';
+import { BASE_URL } from '../../../../../config/axios';
 import { useNavigate } from 'react-router-dom';
-import '../../../styles/pages/admin/Cadastro/SubTipoItensAdmin.css';
+import '../../../../../styles/pages/admin/Cadastro/SubTipoItensAdmin.css';
 
 function SubTipoItensAdmin() {
   const [novoSubTipo, setNovoSubTipo] = useState({ nome: '', descricao: '' });

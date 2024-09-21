@@ -14,15 +14,16 @@ import DashBoardCadastro from './pages/admin/DashBoardCadastro';
 
 import MundosAdmin from './pages/admin/Cadastro/MundosAdmin';
 import MundosAdminListagem from './pages/admin/Listagem/MundosAdminListagem';
+import ClasseAdminListagem from './pages/admin/Listagem/ClasseAdminListagem';
 
 import ItensAdmin from './pages/admin/Cadastro/ItensAdmin';
 import ItensAdminListagem from './pages/admin/Listagem/ItensAdminListagem';
-import TipoItensAdmin from './pages/admin/Cadastro/TipoItensAdmin';
-import SubTipoItensAdmin from './pages/admin/Cadastro/SubTipoItensAdmin';
+import TipoItensAdmin from './pages/admin/Cadastro/Tipos/TipoItensAdmin';
+import SubTipoItensAdmin from './pages/admin/Cadastro/Tipos/SubTipos/SubTipoItensAdmin';
 import SubTipoItensAdminListagem from './pages/admin/Listagem/SubTipoItensAdminListagem';
 
 import CriaturasAdmin from './pages/admin/Cadastro/CriaturaAdmin';
-import TipoCriaturasAdmin from './pages/admin/Cadastro/TipoCriaturaAdmin';
+import TipoCriaturasAdmin from './pages/admin/Cadastro/Tipos/TipoCriaturaAdmin';
 import CriaturasAdminListagem from './pages/admin/Listagem/CriaturaAdminListagem';
 
 import './App.css';
@@ -64,6 +65,10 @@ function App() {
 
             <Route path="/mundosAdmin" element={<MundosAdmin />} />
             <Route path="/mundosAdminListagem" element={<MundosAdminListagem />} />
+
+            <Route path="/classesAdminListagem" element={<ClasseAdminListagem />} />
+
+            
 
             <Route path="/itensAdmin" element={<ItensAdmin />} />
             <Route path="/itensAdminListagem" element={<ItensAdminListagem />} />
