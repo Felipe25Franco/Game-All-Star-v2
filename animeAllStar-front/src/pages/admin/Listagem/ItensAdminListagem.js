@@ -29,7 +29,7 @@ function ItensAdminListagem() {
     const fetchMundosETipos = async () => {
       try {
         const mundosResponse = await axios.get(`${BASE_URL}/mundos`);
-        setMundos(mundosResponse.data);
+        const mundosData = mundosResponse.data;
   
         const tipoItensResponse = await axios.get(`${BASE_URL}/tipoItens`);
         const tipoItensData = tipoItensResponse.data;

@@ -25,6 +25,7 @@ import SubTipoItensAdminListagem from './pages/admin/Listagem/SubTipoItensAdminL
 import CriaturasAdmin from './pages/admin/Cadastro/CriaturaAdmin';
 import TipoCriaturasAdmin from './pages/admin/Cadastro/Tipos/TipoCriaturaAdmin';
 import CriaturasAdminListagem from './pages/admin/Listagem/CriaturaAdminListagem';
+import TipoCriaturaAdminListagem from './pages/admin/Listagem/Tipos/TipoCriaturaAdminListagem';
 
 import './App.css';
 
@@ -77,6 +78,8 @@ function App() {
             <Route path="/subTipoItensAdmin" element={<SubTipoItensAdmin />} />
             
             <Route path="/criaturasAdminListagem" element={<CriaturasAdminListagem />} />
+            <Route path="/tipoCriaturasAdminListagem" element={<TipoCriaturaAdminListagem />} />
+            
             <Route path="/criaturasAdmin" element={<CriaturasAdmin />} />
             <Route path="/tipoCriaturasAdmin" element={<TipoCriaturasAdmin />} />
 

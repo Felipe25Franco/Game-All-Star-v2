@@ -99,7 +99,7 @@ function CriaturaAdminListagem() {
 
       <div className="view-all-button">
         <Link to="/criaturasAdmin">Cadastrar nova Criatura</Link>
-        <Link to="/tipoCriaturasAdmin">Cadastrar novo Tipo de Criatura</Link>
+        <Link to="/tipoCriaturasAdminListagem">Listagem de Tipo de Criaturas</Link>
       </div>
 
       <div className="criaturas-list">

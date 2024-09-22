@@ -56,8 +56,8 @@ function CriaturasAdmin() {
     
     const criaturaParaEnviar = {
       ...newCriatura,
-      tipoCriatura: newCriatura.tipoCriatura, // Envia apenas o ID
-      mundo: newCriatura.mundo
+      tipoCriatura: { id: newCriatura.tipoCriatura }, // Enviando o objeto com o ID
+      mundo: { id: newCriatura.mundo } // Enviando o objeto com o ID
     };
   
     try {
