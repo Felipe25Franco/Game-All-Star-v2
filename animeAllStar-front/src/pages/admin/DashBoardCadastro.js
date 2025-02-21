@@ -32,7 +32,7 @@ function DashBoardCadastro() {
         const nextIndex = (currentIndex + 1) % CRIATURAS_IMAGES.length;
         return CRIATURAS_IMAGES[nextIndex];
       });
-    }, 3000); // 3 segundos
+    }, 5000); 
     
       
     
