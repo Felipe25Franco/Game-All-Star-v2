@@ -29,7 +29,7 @@ function MundosAdminListagem() {
 
   // Filtrando as criaturas com base na busca
   const filteredMundos = mundos.filter((mundo) =>
-    mundo.nome.toLowerCase().includes(searchQuery.toLowerCase())
+    (mundo.nome ?? "").toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   const handleDeleteMundo = async (id) => {

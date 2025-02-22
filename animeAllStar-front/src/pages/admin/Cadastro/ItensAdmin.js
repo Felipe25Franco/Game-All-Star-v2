@@ -80,8 +80,8 @@ function ItensAdmin() {
       setNewItem({
         nome: itemToEdit.nome,
         urlImage: itemToEdit.urlImage || '',
-        tipoItem: itemToEdit.tipoItem ? itemToEdit.tipoItem.id : '',
-        mundo: itemToEdit.mundo ? itemToEdit.mundo.id : '',
+        tipoItem: itemToEdit.tipoItem ? String(itemToEdit.tipoItem.id) : '',
+        mundo: itemToEdit.mundo ? String(itemToEdit.mundo.id) : '',
       });
       setIsEditing(true);
       setEditItemId(id);
