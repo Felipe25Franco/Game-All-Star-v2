@@ -11,7 +11,7 @@ import com.example.animeAllStar_back.service.Criatura.CriaturaService;
 import java.util.Optional;
 
 import com.example.animeAllStar_back.service.Criatura.TipoCriaturaService;
-import com.example.animeAllStar_back.service.MundoService;
+import com.example.animeAllStar_back.service.Mundo.MundoService;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -11,7 +11,7 @@ import com.example.animeAllStar_back.model.entity.Mundo.Mundo;
 import java.util.Optional;
 
 
-import com.example.animeAllStar_back.service.MundoService;
+import com.example.animeAllStar_back.service.Mundo.MundoService;
 import com.example.animeAllStar_back.service.Mundo.ClasseService;
 
 import org.modelmapper.ModelMapper;

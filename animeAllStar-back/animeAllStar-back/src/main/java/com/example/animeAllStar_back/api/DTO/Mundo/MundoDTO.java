@@ -1,4 +1,4 @@
-package com.example.animeAllStar_back.api.DTO;
+package com.example.animeAllStar_back.api.DTO.Mundo;
 
 import com.example.animeAllStar_back.model.entity.Mundo.Mundo;
 import lombok.AllArgsConstructor;

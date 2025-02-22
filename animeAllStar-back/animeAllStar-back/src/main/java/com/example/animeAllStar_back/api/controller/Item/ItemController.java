@@ -5,7 +5,7 @@ import com.example.animeAllStar_back.exception.RegraNegocioException;
 import com.example.animeAllStar_back.model.entity.Mundo.Mundo;
 import com.example.animeAllStar_back.model.entity.Item.Item;
 import com.example.animeAllStar_back.model.entity.Item.TipoItem;
-import com.example.animeAllStar_back.service.MundoService;
+import com.example.animeAllStar_back.service.Mundo.MundoService;
 import com.example.animeAllStar_back.service.Item.ItemService;
 import com.example.animeAllStar_back.service.Item.TipoItemService;
 

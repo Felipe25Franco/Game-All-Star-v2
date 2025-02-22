@@ -1,10 +1,10 @@
-package com.example.animeAllStar_back.api.controller;
+package com.example.animeAllStar_back.api.controller.Mundo;
 
 
-import com.example.animeAllStar_back.api.DTO.MundoDTO;
+import com.example.animeAllStar_back.api.DTO.Mundo.MundoDTO;
 import com.example.animeAllStar_back.exception.RegraNegocioException;
 import com.example.animeAllStar_back.model.entity.Mundo.Mundo;
-import com.example.animeAllStar_back.service.MundoService;
+import com.example.animeAllStar_back.service.Mundo.MundoService;
 
 import java.util.Optional;
 import org.modelmapper.ModelMapper;

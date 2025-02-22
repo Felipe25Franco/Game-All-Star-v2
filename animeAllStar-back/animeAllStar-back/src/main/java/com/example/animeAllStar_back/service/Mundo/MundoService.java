@@ -1,8 +1,7 @@
-package com.example.animeAllStar_back.service;
+package com.example.animeAllStar_back.service.Mundo;
 
-import com.example.animeAllStar_back.exception.RegraNegocioException;
 import com.example.animeAllStar_back.model.entity.Mundo.Mundo;
-import com.example.animeAllStar_back.model.repository.MundoRepository;
+import com.example.animeAllStar_back.model.repository.Mundo.MundoRepository;
 
 import org.springframework.stereotype.Service;
 import java.util.List;

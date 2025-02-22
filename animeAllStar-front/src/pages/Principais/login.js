@@ -47,6 +47,9 @@ function Login() {
       ) : (
         <form className="form register-form">
           <h2>Cadastro</h2>
+          <label htmlFor="register-email">CPF:</label>
+          <input type="text" id="register-cpf" name="cpf" required />
+
           <label htmlFor="register-email">Email:</label>
           <input type="email" id="register-email" name="email" required />
 

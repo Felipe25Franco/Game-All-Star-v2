@@ -81,6 +81,7 @@ function MundosAdminListagem() {
 
       <div className="view-all-button">
         <Link to="/mundosAdmin">Cadastrar novo Mundo</Link>
+        <Link to="/dashBoardCadastro">Voltar</Link>
       </div>
       <div className="mundos-list">
         {filteredMundos.length > 0 ? (
