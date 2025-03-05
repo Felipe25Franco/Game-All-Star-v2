@@ -21,5 +21,7 @@ public class Usuario {
     private String cpf;
     private String senha;
     private boolean admin;
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Player player;
     
 }
