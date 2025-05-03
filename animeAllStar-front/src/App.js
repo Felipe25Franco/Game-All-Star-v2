@@ -20,7 +20,7 @@ import ItensAdmin from './pages/admin/Cadastro/ItensAdmin';
 import ItensAdminListagem from './pages/admin/Listagem/ItensAdminListagem';
 import TipoItensAdmin from './pages/admin/Cadastro/Tipos/TipoItensAdmin';
 import SubTipoItensAdmin from './pages/admin/Cadastro/Tipos/SubTipos/SubTipoItensAdmin';
-import SubTipoItensAdminListagem from './pages/admin/Listagem/SubTipoItensAdminListagem';
+
 
 import CriaturasAdmin from './pages/admin/Cadastro/CriaturaAdmin';
 import TipoCriaturasAdmin from './pages/admin/Cadastro/Tipos/TipoCriaturaAdmin';

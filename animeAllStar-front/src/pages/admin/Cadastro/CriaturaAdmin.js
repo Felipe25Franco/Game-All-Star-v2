@@ -53,22 +53,26 @@ function CriaturasAdmin() {
 
   const handleAddCriatura = async (e) => {
     e.preventDefault();
-    
+
     const criaturaParaEnviar = {
       ...newCriatura,
-      tipoCriatura: { id: newCriatura.tipoCriatura }, // Enviando o objeto com o ID
-      mundo: { id: newCriatura.mundo } // Enviando o objeto com o ID
+      tipoCriatura: newCriatura.tipoCriatura,  // Apenas o ID
+      mundo: newCriatura.mundo // Apenas o ID
     };
-  
+
+    console.log('Dados enviados:', criaturaParaEnviar);  // Verifique os dados aqui
+
     try {
       const response = await axios.post(`${BASE_URL}/criaturas`, criaturaParaEnviar);
       setCriaturas([...criaturas, response.data]);
-      setNewCriatura({nome: '', urlImage: '', descricao: '', invocacao: false, tipoCriatura: '', mundo: ''});
+      setNewCriatura({ nome: '', urlImage: '', descricao: '', invocacao: false, tipoCriatura: '', mundo: '' });
       navigate('/criaturasAdminListagem');
     } catch (error) {
       console.error('Erro ao adicionar criatura:', error);
     }
   };
+
+
 
   const handleClearForm = () => {
     setNewCriatura({ nome: '', descricao: '', invocacao: false, tipoCriatura: '', mundo: '' });
@@ -80,8 +84,15 @@ function CriaturasAdmin() {
 
   const handleSaveEdit = async (e) => {
     e.preventDefault();
+
+    const criaturaParaEnviar = {
+      ...newCriatura,
+      tipoCriatura: { id: newCriatura.tipoCriatura },
+      mundo: { id: newCriatura.mundo }
+    };
+
     try {
-      await axios.put(`${BASE_URL}/criaturas/${editCriaturaId}`, newCriatura);
+      await axios.put(`${BASE_URL}/criaturas/${editCriaturaId}`, criaturaParaEnviar);
       setCriaturas(
         criaturas.map((criatura) =>
           criatura.id === editCriaturaId ? { id: editCriaturaId, ...newCriatura } : criatura
@@ -145,7 +156,7 @@ function CriaturasAdmin() {
               <select
                 id="tipoCriatura"
                 value={newCriatura.tipoCriatura}
-                onChange={(e) => setNewCriatura({ ...newCriatura, tipoCriatura: e.target.value })}
+                onChange={(e) => setNewCriatura({ ...newCriatura, tipoCriatura: parseInt(e.target.value) })}
                 required
               >
                 <option value="">Selecione um tipo de criatura</option>
@@ -160,7 +171,7 @@ function CriaturasAdmin() {
               <select
                 id="mundo"
                 value={newCriatura.mundo}
-                onChange={(e) => setNewCriatura({ ...newCriatura, mundo: e.target.value })}
+                onChange={(e) => setNewCriatura({ ...newCriatura, mundo: parseInt(e.target.value) })}
                 required
               >
                 <option value="">Selecione um mundo</option>

@@ -123,22 +123,18 @@ function DashBoardCadastro() {
 
         {/* Card 3: Excluir */}
         <Grid item xs={12} sm={4}>
-          <Card className="dashboard-card">
-            <CardContent>
-              <Typography variant="h5" component="div" className="dashboard-card-title">
-                Excluir
-              </Typography>
-              <Typography variant="body2" className="dashboard-card-description">
-                Remova um item do sistema.
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button size="small" className="dashboard-button">
-                Excluir
-              </Button>
-            </CardActions>
-          </Card>
-        </Grid>
+                  <Card className="dashboard-card" onClick={() => navigate('/classesAdminListagem')}>
+                    <CardContent>
+                        <Typography variant="h5" component="div" className="dashboard-card-title">
+                            Tecnicas
+                        </Typography>
+                        <Typography variant="body2" className="dashboard-card-description">
+                            Editar Habilidades cadastradas no sistema.
+                        </Typography>
+                    </CardContent>
+
+                    </Card>
+                </Grid>
       </Grid>
     </div>
   );

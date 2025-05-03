@@ -8,6 +8,7 @@ function CriaturaAdminListagem() {
   const [criaturas, setCriaturas] = useState([]);
   const [searchQuery, setSearchQuery] = useState(''); // Valor da busca
   const [mundos, setMundos] = useState([]);
+  const [selectedMundoId, setSelectedMundoId] = useState('');
   const [tipoCriaturas, setTipoCriaturas] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editCriatura, setEditCriatura] = useState(null);
@@ -46,9 +47,11 @@ function CriaturaAdminListagem() {
   };
 
   // Filtrando as criaturas com base na busca
-  const filteredCriaturas = criaturas.filter((criatura) =>
-    criatura.nome.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredCriaturas = criaturas.filter((criatura) => {
+    const matchesName = criatura.nome.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesMundo = selectedMundoId === '' || (criatura.mundo && criatura.mundo.id === parseInt(selectedMundoId));
+    return matchesName && matchesMundo;
+  });
 
   const handleDeleteCriatura = async (id) => {
     try {
@@ -96,6 +99,19 @@ function CriaturaAdminListagem() {
         onChange={handleSearch}
         className="search-input"
       />
+
+      <select
+        className="mundo-filter"
+        value={selectedMundoId}
+        onChange={(e) => setSelectedMundoId(e.target.value)}
+      >
+        <option value="">Filtrar por Mundo</option>
+        {mundos.map((mundo) => (
+          <option key={mundo.id} value={mundo.id}>
+            {mundo.nome}
+          </option>
+        ))}
+      </select>
 
       <div className="view-all-button">
         <Link to="/criaturasAdmin">Cadastrar nova Criatura</Link>
