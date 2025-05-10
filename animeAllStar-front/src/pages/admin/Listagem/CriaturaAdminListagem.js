@@ -6,7 +6,7 @@ import '../../../styles/pages/admin/Listagem/CriaturasAdminListagem.css';
 
 function CriaturaAdminListagem() {
   const [criaturas, setCriaturas] = useState([]);
-  const [searchQuery, setSearchQuery] = useState(''); // Valor da busca
+  const [searchQuery, setSearchQuery] = useState('');
   const [mundos, setMundos] = useState([]);
   const [selectedMundoId, setSelectedMundoId] = useState('');
   const [tipoCriaturas, setTipoCriaturas] = useState([]);
@@ -41,12 +41,10 @@ function CriaturaAdminListagem() {
     fetchMundosETipos();
   }, []);
 
-  // Função de busca em tempo real
   const handleSearch = (e) => {
     setSearchQuery(e.target.value);
   };
 
-  // Filtrando as criaturas com base na busca
   const filteredCriaturas = criaturas.filter((criatura) => {
     const matchesName = criatura.nome.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesMundo = selectedMundoId === '' || (criatura.mundo && criatura.mundo.id === parseInt(selectedMundoId));
@@ -63,13 +61,28 @@ function CriaturaAdminListagem() {
   };
 
   const handleEditCriatura = (criatura) => {
-    setEditCriatura(criatura);
+    const tipo = tipoCriaturas.find(t => criatura.tipoCriatura && t.id === criatura.tipoCriatura.id);
+    const mundo = mundos.find(m => criatura.mundo && m.id === criatura.mundo.id);
+
+    setEditCriatura({
+      ...criatura,
+      tipoCriatura: tipo || null,
+      mundo: mundo || null,
+    });
+
     setIsModalOpen(true);
   };
 
   const handleSaveEdit = async () => {
     try {
-      await axios.put(`${BASE_URL}/criaturas/${editCriatura.id}`, editCriatura);
+      const updatedCriatura = {
+        ...editCriatura,
+        idTipoCriatura: editCriatura.tipoCriatura?.id,
+        idMundo: editCriatura.mundo?.id,
+      };
+
+      await axios.put(`${BASE_URL}/criaturas/${editCriatura.id}`, updatedCriatura);
+
       setCriaturas(
         criaturas.map((criatura) =>
           criatura.id === editCriatura.id ? editCriatura : criatura
@@ -91,7 +104,6 @@ function CriaturaAdminListagem() {
     <div className="criaturas-admin-listagem-container">
       <h1>Lista de Todas as Criaturas</h1>
 
-      {/* Campo de busca */}
       <input
         type="text"
         placeholder="Buscar criatura pelo nome"
@@ -141,76 +153,75 @@ function CriaturaAdminListagem() {
         )}
       </div>
 
-      {/* Modal */}
       {isModalOpen && (
-  <div className="modal-overlay">
-    <div className="modal-content">
-      <h2>Editar criatura</h2>
-      <label htmlFor="nome">Nome da criatura:</label>
-      <input
-        type="text"
-        id="nome"
-        value={editCriatura.nome}
-        onChange={(e) => setEditCriatura({ ...editCriatura, nome: e.target.value })}
-      />
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h2>Editar criatura</h2>
 
-      <label htmlFor="descricao">Descrição da criatura:</label>
-      <textarea
-        id="descricao"
-        value={editCriatura.descricao}
-        onChange={(e) => setEditCriatura({ ...editCriatura, descricao: e.target.value })}
-      />
+            <label htmlFor="nome">Nome da criatura:</label>
+            <input
+              type="text"
+              id="nome"
+              value={editCriatura.nome}
+              onChange={(e) => setEditCriatura({ ...editCriatura, nome: e.target.value })}
+            />
 
-      <label htmlFor="urlImage">URL da Imagem do Mundo:</label>
-      <input
-        type="text"
-        id="urlImage"
-        value={editCriatura.urlImage}
-        onChange={(e) => setEditCriatura({ ...editCriatura, urlImage: e.target.value })}
-      />
+            <label htmlFor="descricao">Descrição da criatura:</label>
+            <textarea
+              id="descricao"
+              value={editCriatura.descricao}
+              onChange={(e) => setEditCriatura({ ...editCriatura, descricao: e.target.value })}
+            />
 
-      <label htmlFor="mundo">Mundo:</label>
-      <select
-        id="mundo"
-        value={editCriatura.mundo ? editCriatura.mundo.id : ''}
-        onChange={(e) => {
-          const selectedMundo = mundos.find(mundo => mundo.id === parseInt(e.target.value));
-          setEditCriatura({ ...editCriatura, mundo: selectedMundo });
-        }}
-      >
-        <option value="">Selecione um mundo</option>
-        {mundos.map((mundo) => (
-          <option key={mundo.id} value={mundo.id}>
-            {mundo.nome}
-          </option>
-        ))}
-      </select>
+            <label htmlFor="urlImage">URL da Imagem:</label>
+            <input
+              type="text"
+              id="urlImage"
+              value={editCriatura.urlImage}
+              onChange={(e) => setEditCriatura({ ...editCriatura, urlImage: e.target.value })}
+            />
 
-      <label htmlFor="tipoCriatura">Tipo de Criatura:</label>
-      <select
-        id="tipoCriatura"
-        value={editCriatura.tipoCriatura ? editCriatura.tipoCriatura.id : ''}
-        onChange={(e) => {
-          const selectedTipoCriatura = tipoCriaturas.find(tipo => tipo.id === parseInt(e.target.value));
-          setEditCriatura({ ...editCriatura, tipoCriatura: selectedTipoCriatura });
-        }}
-      >
-        <option value="">Selecione um tipo</option>
-        {tipoCriaturas.map((tipo) => (
-          <option key={tipo.id} value={tipo.id}>
-            {tipo.nome}
-          </option>
-        ))}
-      </select>
+            <label htmlFor="mundo">Mundo:</label>
+            <select
+              id="mundo"
+              value={editCriatura.mundo ? editCriatura.mundo.id : ''}
+              onChange={(e) => {
+                const selectedMundo = mundos.find(mundo => mundo.id === parseInt(e.target.value));
+                setEditCriatura({ ...editCriatura, mundo: selectedMundo });
+              }}
+            >
+              <option value="">Selecione um mundo</option>
+              {mundos.map((mundo) => (
+                <option key={mundo.id} value={mundo.id}>
+                  {mundo.nome}
+                </option>
+              ))}
+            </select>
 
-      <div className="modal-buttons">
-        <button onClick={handleSaveEdit}>Salvar</button>
-        <button onClick={handleModalClose}>Cancelar</button>
-      </div>
-    </div>
-  </div>
-)}
+            <label htmlFor="tipoCriatura">Tipo de Criatura:</label>
+            <select
+              id="tipoCriatura"
+              value={editCriatura.tipoCriatura ? editCriatura.tipoCriatura.id : ''}
+              onChange={(e) => {
+                const selectedTipoCriatura = tipoCriaturas.find(tipo => tipo.id === parseInt(e.target.value));
+                setEditCriatura({ ...editCriatura, tipoCriatura: selectedTipoCriatura });
+              }}
+            >
+              <option value="">Selecione um tipo</option>
+              {tipoCriaturas.map((tipo) => (
+                <option key={tipo.id} value={tipo.id}>
+                  {tipo.nome}
+                </option>
+              ))}
+            </select>
 
+            <div className="modal-buttons">
+              <button onClick={handleSaveEdit}>Salvar</button>
+              <button onClick={handleModalClose}>Cancelar</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
