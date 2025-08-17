@@ -1,5 +1,6 @@
 package com.example.animeAllStar_back.service.Mundo;
 
+import java.util.Random;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Objects;
@@ -14,6 +15,7 @@ import com.example.animeAllStar_back.model.repository.Mundo.ClasseRepository;
 public class ClasseService {
     
     private ClasseRepository repository;
+    private final Random random = new Random();
 
     public ClasseService (ClasseRepository repository) {
         this.repository = repository;
@@ -36,5 +38,14 @@ public class ClasseService {
 
     public void validar(Classe classe) {
         
+    }
+
+    public Optional<Classe> sortearClassePorMundo(Long mundoId) {
+        List<Classe> classes = repository.findByMundoId(mundoId);
+        if (classes.isEmpty()) {
+            return Optional.empty();
+        }
+        int index = random.nextInt(classes.size());
+        return Optional.of(classes.get(index));
     }
 }

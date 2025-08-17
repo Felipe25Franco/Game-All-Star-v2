@@ -118,6 +118,23 @@ public class ClasseController {
         }
     }
 
+    @GetMapping("/sorteio/{mundoId}")
+    @ApiOperation("Sortear uma Classe aleatória de um Mundo")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "Classe sorteada com sucesso"),
+            @ApiResponse(code = 404, message = "Nenhuma classe encontrada para este mundo"),
+            @ApiResponse(code = 500, message = "Erro interno no servidor")
+    })
+    public ResponseEntity sortearClassePorMundo(
+            @PathVariable("mundoId") @ApiParam("Id do Mundo") Long mundoId) {
+
+        Optional<Classe> classe = service.sortearClassePorMundo(mundoId);
+        if (!classe.isPresent()) {
+            return new ResponseEntity("Nenhuma classe encontrada para este mundo", HttpStatus.NOT_FOUND);
+        }
+        return ResponseEntity.ok(ClasseDTO.create(classe.get()));
+    }
+
     public Classe converter(ClasseDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         Classe classe = modelMapper.map(dto, Classe.class);
