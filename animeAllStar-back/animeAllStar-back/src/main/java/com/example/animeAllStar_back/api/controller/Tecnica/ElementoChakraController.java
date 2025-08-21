@@ -110,6 +110,12 @@ public class ElementoChakraController {
         }
     }
 
+    @GetMapping("/sorteio")
+    public ResponseEntity<List<ElementoChakra>> sortearElementos() {
+        List<ElementoChakra> sorteados = service.sortearElementosBasicos();
+        return ResponseEntity.ok(sorteados);
+    }
+
     public ElementoChakra converter(ElementoChakraDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         return modelMapper.map(dto, ElementoChakra.class);
