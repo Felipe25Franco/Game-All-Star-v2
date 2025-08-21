@@ -1,16 +1,12 @@
-package com.example.animeAllStar_back.api.controller.Habilidade;
+package com.example.animeAllStar_back.api.controller.Tecnica;
 
 
 import java.util.Optional;
 
-import com.example.animeAllStar_back.api.DTO.Habilidade.ElementoChakraDTO;
-import com.example.animeAllStar_back.api.DTO.Item.SubTipoItemDTO;
-import com.example.animeAllStar_back.api.DTO.Item.TipoItemDTO;
+import com.example.animeAllStar_back.api.DTO.Tecnica.ElementoChakraDTO;
 import com.example.animeAllStar_back.exception.RegraNegocioException;
-import com.example.animeAllStar_back.model.entity.Habilidade.ElementoChakra;
-import com.example.animeAllStar_back.model.entity.Item.SubTipoItem;
-import com.example.animeAllStar_back.model.entity.Item.TipoItem;
-import com.example.animeAllStar_back.service.Habilidade.ElementoChakraService;
+import com.example.animeAllStar_back.model.entity.Tecnicas.ElementoChakra;
+import com.example.animeAllStar_back.service.Tecnica.ElementoChakraService;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

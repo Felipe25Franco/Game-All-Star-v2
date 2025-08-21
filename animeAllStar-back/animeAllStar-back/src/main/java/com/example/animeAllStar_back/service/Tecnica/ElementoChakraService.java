@@ -1,9 +1,9 @@
-package com.example.animeAllStar_back.service.Habilidade;
+package com.example.animeAllStar_back.service.Tecnica;
 
 
-import com.example.animeAllStar_back.model.entity.Habilidade.ElementoChakra;
+import com.example.animeAllStar_back.model.entity.Tecnicas.ElementoChakra;
 
-import com.example.animeAllStar_back.model.repository.Habilidade.ElementoChakraRepository;
+import com.example.animeAllStar_back.model.repository.Tecnica.ElementoChakraRepository;
 
 import org.springframework.stereotype.Service;
 import java.util.List;

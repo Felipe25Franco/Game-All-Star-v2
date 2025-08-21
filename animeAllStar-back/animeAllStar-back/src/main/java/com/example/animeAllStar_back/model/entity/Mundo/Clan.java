@@ -1,16 +1,20 @@
-package com.example.animeAllStar_back.model.entity.Habilidade;
+package com.example.animeAllStar_back.model.entity.Mundo;
 
-import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ElementoChakra {
+public class Clan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
