@@ -3,10 +3,13 @@ package com.example.animeAllStar_back.model.entity;
 import javax.persistence.*;
 
 
+import com.example.animeAllStar_back.model.entity.Mundo.Mundo;
 import lombok.AllArgsConstructor;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -24,5 +27,7 @@ public class Player {
     @OneToOne
     @JoinColumn(name = "usuario_id", nullable = false, unique = true)
     private Usuario usuario;
+
+    private List<Mundo> mundos;
 
 }
