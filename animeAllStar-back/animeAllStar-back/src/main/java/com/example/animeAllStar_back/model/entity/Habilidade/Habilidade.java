@@ -2,6 +2,7 @@ package com.example.animeAllStar_back.model.entity.Habilidade;
 
 import javax.persistence.*;
 
+import com.example.animeAllStar_back.model.entity.Mundo.Mundo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,4 +16,6 @@ public class Habilidade {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
+    @ManyToOne
+    private Mundo Mundos;
 }

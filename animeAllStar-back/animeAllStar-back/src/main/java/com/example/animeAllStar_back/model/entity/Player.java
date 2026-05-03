@@ -28,6 +28,7 @@ public class Player {
     @JoinColumn(name = "usuario_id", nullable = false, unique = true)
     private Usuario usuario;
 
+    @OneToMany
     private List<Mundo> mundos;
 
 }

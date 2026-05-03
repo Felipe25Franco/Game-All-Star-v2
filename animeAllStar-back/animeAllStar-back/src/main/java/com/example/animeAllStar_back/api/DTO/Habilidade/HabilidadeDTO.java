@@ -1,6 +1,7 @@
 package com.example.animeAllStar_back.api.DTO.Habilidade;
 
 import com.example.animeAllStar_back.model.entity.Habilidade.Habilidade;
+import com.example.animeAllStar_back.model.entity.Mundo.Mundo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,6 +12,7 @@ import org.modelmapper.ModelMapper;
 public class HabilidadeDTO {
     private Long id;
     private String nome;
+    private Mundo mundo;
     public static HabilidadeDTO create(Habilidade habilidade) {
         ModelMapper modelMapper = new ModelMapper();
         HabilidadeDTO dto = modelMapper.map(habilidade, HabilidadeDTO.class);
